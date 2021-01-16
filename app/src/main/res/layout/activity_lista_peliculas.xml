@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100"
+    tools:context="com.guillermo.cine.listaPeliculas.view.ViewListaPeliculas">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:spinnerMode="dialog" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPeliculas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="90" />
+
+
+</LinearLayout>
