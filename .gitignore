@@ -9,3 +9,5 @@
 local.properties
 /app/src/androidTest/java/com/guillermo/videojuegos/
 
+/app/src/androidTest/java/com/guillermo/cine/
+/app/src/test/java/com/guillermo/cine/

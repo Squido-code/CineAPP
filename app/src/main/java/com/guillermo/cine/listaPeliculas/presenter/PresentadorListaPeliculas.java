@@ -22,10 +22,10 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
     public void getPeliculas(Boolean isFiltrado) {
         //creamos hasmap para connvertir el filtro en una id entendible para la API
         HashMap<String, String> filtroId = new HashMap<>();
-        filtroId.put("acción", "4");
-        filtroId.put("aventura", "3");
-        filtroId.put("RPG", "5");
-        filtroId.put("Estrategia", "10");
+        filtroId.put("acción", "1");
+        filtroId.put("aventura", "2");
+        filtroId.put("terror", "3");
+        filtroId.put("ciencia ficcion", "4");
         if (isFiltrado) {
             modelListaPeliculas.getPeliculasFilterWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
                 @Override

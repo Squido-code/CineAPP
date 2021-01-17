@@ -11,19 +11,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ModelListaPeliculas
         implements ContratoListaPeliculas.Model {
     private String url;
-    private ArrayList<Pelicula> listaArrayJuegos;
+    private ArrayList<Pelicula> listaArrayPeliculas;
     private OnLstPeliculasListener onLstPeliculasListener;
 
 
     @Override
     public void getPeliculasWS(OnLstPeliculasListener onLstPeliculasListener) {
         this.onLstPeliculasListener = onLstPeliculasListener;
-        url = "https://api.rawg.io/api/games?platforms=4&key=0b839d953789459bba3eac8865198928";
-        TareasegudoPlano task = new TareasegudoPlano();
+        url = "http://192.168.1.134:8080/Controller?ACTION=PELICULA.FIND_ALL";
+        TareaSegudoPlano task = new TareaSegudoPlano();
         task.execute();
     }
 
@@ -33,30 +34,28 @@ public class ModelListaPeliculas
         String urlBase = "https://api.rawg.io/api/games?platforms=4&key=0b839d953789459bba3eac8865198928";
         String urlFiltro = "&genres=" + filtro;
         url = urlBase + urlFiltro;
-        TareasegudoPlano task = new TareasegudoPlano();
+        TareaSegudoPlano task = new TareaSegudoPlano();
         task.execute();
     }
 
 
-    class TareasegudoPlano extends AsyncTask<String, Integer, Boolean> {
+    class TareaSegudoPlano extends AsyncTask<String, Integer, Boolean> {
 
         @Override
         protected Boolean doInBackground(String... strings) {
             Post post = new Post();
-            try {
-                JSONObject objectJuegos = post.getServerDataGetObject(url);
-                JSONArray listaJuegos = objectJuegos.getJSONArray("results");
-                listaArrayJuegos = Pelicula.getArrayListFromJSON(listaJuegos);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+//            HashMap<String,String> parametros = new HashMap();
+//            parametros.put("ACTION","PELICULA.FIND_ALL");
+            JSONArray listaPeliculas = post.getServerDataGet(url);
+            //JSONArray listaPeliculas = objectPeliculas.getJSONArray("");
+            listaArrayPeliculas = Pelicula.getArrayListFromJSON(listaPeliculas);
             return true;
         }
 
         @Override
         protected void onPostExecute(Boolean resp) {
-            if (listaArrayJuegos != null && listaArrayJuegos.size() > 0) {
-                onLstPeliculasListener.onResolve(listaArrayJuegos);
+            if (listaArrayPeliculas != null && listaArrayPeliculas.size() > 0) {
+                onLstPeliculasListener.onResolve(listaArrayPeliculas);
             } else {
                 onLstPeliculasListener.onReject("Error al traer los datos del servidor");
             }
