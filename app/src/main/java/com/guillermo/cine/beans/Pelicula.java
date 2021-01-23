@@ -10,7 +10,7 @@ public class Pelicula {
     private static final String ID = "id";
     private static final String NAME = "titulo";
     private static final String SINOPSIS = "sinopsis";
-    private static final String BACKGROUND_IMAGE = "background_image";
+    private static final String BACKGROUND_IMAGE = "cartel";
     private static final String FECHA_ESTRENO = "fechaEstreno";
     private static final String DURACION = "duracion";
     private static final String PRECIO = "precio";
@@ -37,10 +37,10 @@ public class Pelicula {
                 pelicula.setId(json_data.getString(ID));
                 pelicula.setNombre(json_data.getString(NAME));
                 pelicula.setImagen(json_data.getString(BACKGROUND_IMAGE));
-                pelicula.setDuracion(DURACION);
-                pelicula.setFechaEstreno(FECHA_ESTRENO);
-                pelicula.setPrecio(PRECIO);
-                pelicula.setSinopsis(SINOPSIS);
+                pelicula.setDuracion(json_data.getString(DURACION));
+                pelicula.setFechaEstreno(json_data.getString(FECHA_ESTRENO));
+                pelicula.setPrecio(json_data.getString(PRECIO));
+                pelicula.setSinopsis(json_data.getString(SINOPSIS));
 
                 lista.add(pelicula);
             }

@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 
-public class CineAdapter extends RecyclerView.Adapter<CineAdapter.JuegoViewHolder> {
+public class CineAdapter extends RecyclerView.Adapter<CineAdapter.PeliculaViewHolder> {
     private final ArrayList<Pelicula> listaJuegos;
     private final Context context;
 
@@ -30,17 +30,18 @@ public class CineAdapter extends RecyclerView.Adapter<CineAdapter.JuegoViewHolde
 
     @NonNull
     @Override
-    public JuegoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PeliculaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fila_pelicula, parent, false);
 
-        return new JuegoViewHolder(view);
+        return new PeliculaViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull JuegoViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         Pelicula pelicula = listaJuegos.get(position);
         holder.nombre.setText(pelicula.getNombre());
+        String prueba = pelicula.getImagen();
         Picasso.get().load(pelicula.getImagen()).into(holder.imagen);
         holder.imagen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +58,11 @@ public class CineAdapter extends RecyclerView.Adapter<CineAdapter.JuegoViewHolde
         return listaJuegos.size();
     }
 
-    public static class JuegoViewHolder extends RecyclerView.ViewHolder {
+    public static class PeliculaViewHolder extends RecyclerView.ViewHolder {
         public ImageView imagen;
         public TextView nombre;
 
-        public JuegoViewHolder(View v) {
+        public PeliculaViewHolder(View v) {
             super(v);
             imagen = v.findViewById(R.id.imagenPelicula);
             nombre = v.findViewById(R.id.txtNombre);
