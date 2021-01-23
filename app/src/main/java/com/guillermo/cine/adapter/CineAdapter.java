@@ -41,7 +41,6 @@ public class CineAdapter extends RecyclerView.Adapter<CineAdapter.PeliculaViewHo
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         Pelicula pelicula = listaJuegos.get(position);
         holder.nombre.setText(pelicula.getNombre());
-        String prueba = pelicula.getImagen();
         Picasso.get().load(pelicula.getImagen()).into(holder.imagen);
         holder.imagen.setOnClickListener(new View.OnClickListener() {
             @Override

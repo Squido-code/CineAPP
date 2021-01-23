@@ -31,9 +31,8 @@ public class ModelListaPeliculas
     @Override
     public void getPeliculasFilterWS(OnLstPeliculasListener onLstPeliculasListener, String filtro) {
         this.onLstPeliculasListener = onLstPeliculasListener;
-        String urlBase = "https://api.rawg.io/api/games?platforms=4&key=0b839d953789459bba3eac8865198928";
-        String urlFiltro = "&genres=" + filtro;
-        url = urlBase + urlFiltro;
+        String urlBase = "http://192.168.1.134:8080/Controller?ACTION=PELICULA.FILTRO&GENERO=";
+        url = urlBase + filtro;
         TareaSegudoPlano task = new TareaSegudoPlano();
         task.execute();
     }
@@ -44,10 +43,7 @@ public class ModelListaPeliculas
         @Override
         protected Boolean doInBackground(String... strings) {
             Post post = new Post();
-//            HashMap<String,String> parametros = new HashMap();
-//            parametros.put("ACTION","PELICULA.FIND_ALL");
             JSONArray listaPeliculas = post.getServerDataGet(url);
-            //JSONArray listaPeliculas = objectPeliculas.getJSONArray("");
             listaArrayPeliculas = Pelicula.getArrayListFromJSON(listaPeliculas);
             return true;
         }

@@ -13,9 +13,9 @@ public class Ficha {
     public static Ficha getFichafromJSONObject(JSONObject jsonObject) {
         Ficha ficha = new Ficha();
         try {
-            String nombre = jsonObject.getString("name");
-            String description = jsonObject.getString("description");
-            String urlImagen = jsonObject.getString("background_image");
+            String nombre = jsonObject.getString("titulo");
+            String description = jsonObject.getString("sinopsis");
+            String urlImagen = jsonObject.getString("cartel");
             ficha.setNombre(nombre);
 
             ficha.setDescription(description);

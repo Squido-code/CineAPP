@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class ModelFichaDescriptiva implements ContratoFichaDescriptiva.Model {
     //    https://api.rawg.io/api/games/ + id del juego
-    private final String URL = "https://api.rawg.io/api/games/";
+    private final String URL = "http://192.168.1.134:8080/Controller?ACTION=PELICULA.FICHA&ID=";
     private Ficha fichaCompleta;
     private OnLstFichaListener onLstFichaListener;
     private String idFicha;
