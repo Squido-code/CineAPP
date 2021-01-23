@@ -56,7 +56,7 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
     public void filtrado() {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
-        String[] generos = new String[]{"Filtro:", "todos", "acción", "aventura", "terror", "ciencia ficcion"};
+        String[] generos = new String[]{"Filtro por genero:", "todos", "acción", "aventura", "terror", "ciencia ficcion"};
         ArrayAdapter<String> adapterFiltro = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, generos);
         adapterFiltro.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapterFiltro);
