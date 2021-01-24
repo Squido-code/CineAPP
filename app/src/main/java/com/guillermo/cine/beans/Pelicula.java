@@ -14,6 +14,7 @@ public class Pelicula {
     private static final String FECHA_ESTRENO = "fechaEstreno";
     private static final String DURACION = "duracion";
     private static final String PRECIO = "precio";
+    private static final String HORARIOS = "horarios";
 
     private String id;
     private String nombre;
@@ -22,7 +23,11 @@ public class Pelicula {
     private String duracion ;
     private String precio;
     private String imagen;
+    private ArrayList<String> horarios;
 
+    public Pelicula() {
+        this.horarios = new ArrayList<>();
+    }
 
     public static ArrayList<Pelicula> getArrayListFromJSON(JSONArray listaJuegos) {
         ArrayList<Pelicula> lista = null;
@@ -42,6 +47,11 @@ public class Pelicula {
                 pelicula.setPrecio(json_data.getString(PRECIO));
                 pelicula.setSinopsis(json_data.getString(SINOPSIS));
 
+
+                JSONArray horariosJSON = json_data.getJSONArray("horarios");
+                for (int j = 0; j < horariosJSON.length() ; j++) {
+                pelicula.getHorarios().add(horariosJSON.getString(j));
+                }
                 lista.add(pelicula);
             }
         } catch (JSONException e) {
@@ -105,4 +115,13 @@ public class Pelicula {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    public ArrayList<String> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(ArrayList<String> horarios) {
+        this.horarios = horarios;
+    }
+
 }
