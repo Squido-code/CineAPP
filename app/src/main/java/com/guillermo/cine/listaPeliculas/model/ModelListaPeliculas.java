@@ -27,6 +27,13 @@ public class ModelListaPeliculas
         TareaSegudoPlano task = new TareaSegudoPlano();
         task.execute();
     }
+    @Override
+    public void getPeliculasOrdenWS(OnLstPeliculasListener onLstPeliculasListener) {
+        this.onLstPeliculasListener = onLstPeliculasListener;
+        url = "http://192.168.1.134:8080/Controller?ACTION=PELICULA.ORDENVOTO";
+        TareaSegudoPlano task = new TareaSegudoPlano();
+        task.execute();
+    }
 
     @Override
     public void getPeliculasFilterWS(OnLstPeliculasListener onLstPeliculasListener, String filtro) {

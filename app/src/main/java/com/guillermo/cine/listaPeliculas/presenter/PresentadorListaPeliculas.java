@@ -1,5 +1,7 @@
 package com.guillermo.cine.listaPeliculas.presenter;
 
+import android.widget.Switch;
+
 import com.guillermo.cine.beans.Pelicula;
 import com.guillermo.cine.listaPeliculas.contract.ContratoListaPeliculas;
 import com.guillermo.cine.listaPeliculas.model.ModelListaPeliculas;
@@ -19,38 +21,55 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
     }
 
     @Override
-    public void getPeliculas(Boolean isFiltrado) {
+    public void getPeliculas(String filtro) {
         //creamos hasmap para connvertir el filtro en una id entendible para la API
         HashMap<String, String> filtroId = new HashMap<>();
         filtroId.put("acción", "1");
         filtroId.put("aventura", "2");
         filtroId.put("terror", "3");
         filtroId.put("ciencia ficcion", "4");
-        if (isFiltrado) {
-            modelListaPeliculas.getPeliculasFilterWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
-                @Override
-                public void onResolve(ArrayList<Pelicula> peliculas) {
-                    listaVideojuegos.success(peliculas);
-                }
+        switch(filtro){
+            case "ninguno":
+                modelListaPeliculas.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+                    @Override
+                    public void onResolve(ArrayList<Pelicula> peliculas) {
+                        listaVideojuegos.success(peliculas);
+                    }
 
-                @Override
-                public void onReject(String error) {
-                    listaVideojuegos.error("Error al tratar los datos");
-                }
-            }, filtroId.get(filtro));
-        } else {
-            modelListaPeliculas.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
-                @Override
-                public void onResolve(ArrayList<Pelicula> peliculas) {
-                    listaVideojuegos.success(peliculas);
-                }
+                    @Override
+                    public void onReject(String error) {
+                        listaVideojuegos.error("Error al tratar los datos");
+                    }
+                });
+                break;
+            case "filtrado":
+                modelListaPeliculas.getPeliculasFilterWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+                    @Override
+                    public void onResolve(ArrayList<Pelicula> peliculas) {
+                        listaVideojuegos.success(peliculas);
+                    }
 
-                @Override
-                public void onReject(String error) {
-                    listaVideojuegos.error("Error al tratar los datos");
-                }
-            });
+                    @Override
+                    public void onReject(String error) {
+                        listaVideojuegos.error("Error al tratar los datos");
+                    }
+                }, filtroId.get(filtro));
+                break;
+            case "ordenVoto":
+                modelListaPeliculas.getPeliculasOrdenWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+                    @Override
+                    public void onResolve(ArrayList<Pelicula> peliculas) {
+                        listaVideojuegos.success(peliculas);
+                    }
+
+                    @Override
+                    public void onReject(String error) {
+                        listaVideojuegos.error("Error al tratar los datos");
+                    }
+                });
+                break;
         }
+
     }
     @Override
     public void getPeliculasFiltro(String filtro){

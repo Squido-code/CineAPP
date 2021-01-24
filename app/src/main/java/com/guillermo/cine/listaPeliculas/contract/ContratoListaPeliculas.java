@@ -13,7 +13,7 @@ public interface ContratoListaPeliculas {
     }
 
     interface Presenter {
-        void getPeliculas(Boolean isFiltrado);
+        void getPeliculas(String filtro);
         void getPeliculasFiltro(String filtro);
     }
     interface Model{
@@ -23,6 +23,7 @@ public interface ContratoListaPeliculas {
 
         void getPeliculasTextoWS(OnLstPeliculasListener onLstPeliculasListener, String filtro);
 
+        void getPeliculasOrdenWS(OnLstPeliculasListener onLstPeliculasListener);
         /*Reactivo*/
         interface OnLstPeliculasListener {
             void onResolve(ArrayList<Pelicula> peliculas);
