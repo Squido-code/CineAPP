@@ -52,7 +52,20 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
             });
         }
     }
+    @Override
+    public void getPeliculasFiltro(String filtro){
+        modelListaPeliculas.getPeliculasTextoWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
+            @Override
+            public void onResolve(ArrayList<Pelicula> peliculas) {
+                listaVideojuegos.success(peliculas);
+            }
 
+            @Override
+            public void onReject(String error) {
+                listaVideojuegos.error("Error al tratar los datos");
+            }
+        },filtro);
+    }
     public String getFiltro() {
         return filtro;
     }

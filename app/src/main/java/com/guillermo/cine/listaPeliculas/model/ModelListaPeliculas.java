@@ -36,6 +36,14 @@ public class ModelListaPeliculas
         TareaSegudoPlano task = new TareaSegudoPlano();
         task.execute();
     }
+    @Override
+    public void getPeliculasTextoWS(OnLstPeliculasListener onLstPeliculasListener, String filtro){
+        this.onLstPeliculasListener = onLstPeliculasListener;
+        String urlBase = "http://192.168.1.134:8080/Controller?ACTION=PELICULA.FILTROTITULO&TEXTO=";
+        url = urlBase + filtro;
+        TareaSegudoPlano task = new TareaSegudoPlano();
+        task.execute();
+    }
 
 
     class TareaSegudoPlano extends AsyncTask<String, Integer, Boolean> {

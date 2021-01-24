@@ -21,29 +21,32 @@
         tools:context="com.guillermo.cine.listaPeliculas.view.ViewListaPeliculas">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/textoFiltrado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="50"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Filtro" />
+            android:text="Filtrar por titulo" />
 
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="aceptar"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:layout_marginLeft="10dp"/>
+            android:onClick="filtradoPorPalabra"
+            android:text="aceptar" />
+
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="limpiar"
-            android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:onClick="limpiarFiltro"
+            android:text="limpiar" />
     </LinearLayout>
 
 

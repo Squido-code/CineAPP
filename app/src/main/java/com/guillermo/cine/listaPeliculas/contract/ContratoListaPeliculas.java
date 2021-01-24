@@ -14,12 +14,15 @@ public interface ContratoListaPeliculas {
 
     interface Presenter {
         void getPeliculas(Boolean isFiltrado);
-
+        void getPeliculasFiltro(String filtro);
     }
     interface Model{
         void getPeliculasWS(OnLstPeliculasListener onLstPeliculasListener);
 
         void getPeliculasFilterWS(OnLstPeliculasListener onLstPeliculasListener, String filtro);
+
+        void getPeliculasTextoWS(OnLstPeliculasListener onLstPeliculasListener, String filtro);
+
         /*Reactivo*/
         interface OnLstPeliculasListener {
             void onResolve(ArrayList<Pelicula> peliculas);

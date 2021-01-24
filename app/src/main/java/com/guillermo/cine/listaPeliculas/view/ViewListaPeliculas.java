@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
 
     @Override
     public void error(String mensage) {
-        Toast.makeText(this, "error al mostrar los datos", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "No existen peliculas", Toast.LENGTH_LONG).show();
     }
 
 
@@ -67,7 +68,7 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
                 String selecteditem = adapter.getItemAtPosition(i).toString();
                 String seleccion = selecteditem;
                 switch (seleccion) {
-                    case "Filtro:":
+                    case "Filtro por genero:":
                         return;
                     case "todos":
                         presentadorListaPeliculas.getPeliculas(false);
@@ -84,6 +85,18 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
                 return;
             }
         });
+    }
+
+    public void filtradoPorPalabra(View view){
+        EditText filtradoTexto = (EditText) findViewById(R.id.textoFiltrado);
+        String texto = String.valueOf(filtradoTexto.getText());
+        presentadorListaPeliculas.getPeliculasFiltro(texto);
+
+    }
+    public void limpiarFiltro(View view){
+        EditText filtradoTexto = (EditText) findViewById(R.id.textoFiltrado);
+        filtradoTexto.setText("Filtrar por titulo");
+        presentadorListaPeliculas.getPeliculas(false);
     }
 
 }
