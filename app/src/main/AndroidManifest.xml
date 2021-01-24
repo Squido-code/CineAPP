@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Peliculas"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".login.view.loginView"
+            android:name=".login.view.LoginView"
             android:label="@string/title_activity_login_view"
             android:theme="@style/Theme.Peliculas.NoActionBar"></activity>
         <activity android:name=".fichaDescriptiva.view.FichaDescriptiva"></activity>

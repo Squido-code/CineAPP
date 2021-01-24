@@ -1,7 +1,5 @@
 package com.guillermo.cine.listaPeliculas.presenter;
 
-import android.widget.Switch;
-
 import com.guillermo.cine.beans.Pelicula;
 import com.guillermo.cine.listaPeliculas.contract.ContratoListaPeliculas;
 import com.guillermo.cine.listaPeliculas.model.ModelListaPeliculas;
@@ -11,12 +9,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PresentadorListaPeliculas implements ContratoListaPeliculas.Presenter {
-    private final ViewListaPeliculas listaVideojuegos;
+    private final ViewListaPeliculas listaPeliculas;
     private final ModelListaPeliculas modelListaPeliculas;
     private String filtro;
 
-    public PresentadorListaPeliculas(ViewListaPeliculas listaVideojuegos) {
-        this.listaVideojuegos = listaVideojuegos;
+    public PresentadorListaPeliculas(ViewListaPeliculas listaPeliculas) {
+        this.listaPeliculas = listaPeliculas;
         modelListaPeliculas = new ModelListaPeliculas();
     }
 
@@ -26,12 +24,12 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         modelListaPeliculas.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
             @Override
             public void onResolve(ArrayList<Pelicula> peliculas) {
-                listaVideojuegos.success(peliculas);
+                listaPeliculas.success(peliculas);
             }
 
             @Override
             public void onReject(String error) {
-                listaVideojuegos.error("Error al tratar los datos");
+                listaPeliculas.error("Error al tratar los datos");
             }
         });
 
@@ -41,12 +39,12 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         modelListaPeliculas.getPeliculasTextoWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
             @Override
             public void onResolve(ArrayList<Pelicula> peliculas) {
-                listaVideojuegos.success(peliculas);
+                listaPeliculas.success(peliculas);
             }
 
             @Override
             public void onReject(String error) {
-                listaVideojuegos.error("Error al tratar los datos");
+                listaPeliculas.error("Error al tratar los datos");
             }
         },filtro);
     }
@@ -60,12 +58,12 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         modelListaPeliculas.getPeliculasFilterWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
             @Override
             public void onResolve(ArrayList<Pelicula> peliculas) {
-                listaVideojuegos.success(peliculas);
+                listaPeliculas.success(peliculas);
             }
 
             @Override
             public void onReject(String error) {
-                listaVideojuegos.error("Error al tratar los datos");
+                listaPeliculas.error("Error al tratar los datos");
             }
         }, filtroId.get(filtro));
     }
@@ -74,12 +72,12 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
         modelListaPeliculas.getPeliculasOrdenWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
             @Override
             public void onResolve(ArrayList<Pelicula> peliculas) {
-                listaVideojuegos.success(peliculas);
+                listaPeliculas.success(peliculas);
             }
 
             @Override
             public void onReject(String error) {
-                listaVideojuegos.error("Error al tratar los datos");
+                listaPeliculas.error("Error al tratar los datos");
             }
         });
     }
