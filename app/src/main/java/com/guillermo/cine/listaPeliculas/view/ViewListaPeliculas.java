@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -32,7 +33,7 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_peliculas);
         presentadorListaPeliculas = new PresentadorListaPeliculas(this);
-        presentadorListaPeliculas.getPeliculas(false);
+        presentadorListaPeliculas.getPeliculas("ninguno");
         filtrado();
     }
 
@@ -71,11 +72,11 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
                     case "Filtro por genero:":
                         return;
                     case "todos":
-                        presentadorListaPeliculas.getPeliculas(false);
+                        presentadorListaPeliculas.getPeliculas("ninguno");
                         break;
                     default:
                         presentadorListaPeliculas.setFiltro(selecteditem);
-                        presentadorListaPeliculas.getPeliculas(true);
+                        presentadorListaPeliculas.getPeliculas("filtrado");
                         break;
                 }
             }
@@ -96,10 +97,15 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
     public void limpiarFiltro(View view){
         EditText filtradoTexto = (EditText) findViewById(R.id.textoFiltrado);
         filtradoTexto.setText("Filtrar por titulo");
-        presentadorListaPeliculas.getPeliculas(false);
+        presentadorListaPeliculas.getPeliculas("ninguno");
     }
     public void ordenVotos(View view){
-
+        CheckBox checkBox = findViewById(R.id.chkVotos);
+        if(checkBox.isChecked()){
+            presentadorListaPeliculas.getPeliculasFiltro("ordenVoto");
+        }else{
+            presentadorListaPeliculas.getPeliculasFiltro("ninguno");
+        }
     }
 
 }

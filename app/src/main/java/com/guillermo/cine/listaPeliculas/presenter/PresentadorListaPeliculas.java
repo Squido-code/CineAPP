@@ -21,14 +21,14 @@ public class PresentadorListaPeliculas implements ContratoListaPeliculas.Present
     }
 
     @Override
-    public void getPeliculas(String filtro) {
+    public void getPeliculas(String opcion) {
         //creamos hasmap para connvertir el filtro en una id entendible para la API
         HashMap<String, String> filtroId = new HashMap<>();
         filtroId.put("acción", "1");
         filtroId.put("aventura", "2");
         filtroId.put("terror", "3");
         filtroId.put("ciencia ficcion", "4");
-        switch(filtro){
+        switch(opcion){
             case "ninguno":
                 modelListaPeliculas.getPeliculasWS(new ContratoListaPeliculas.Model.OnLstPeliculasListener() {
                     @Override
