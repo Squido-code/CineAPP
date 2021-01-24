@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#8F6262"
     android:orientation="vertical"
     android:weightSum="100"
     tools:context=".login.view.loginView">
@@ -43,20 +44,21 @@
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:paddingTop="30dp">
-    <Button
 
-        android:id="@+id/button"
-        android:layout_width="120dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="aceptar" />
-</LinearLayout>
+        android:paddingTop="30dp">
 
+        <Button
+
+            android:id="@+id/button"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="aceptar" />
+    </LinearLayout>
 
 
 </LinearLayout>
