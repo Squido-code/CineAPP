@@ -98,5 +98,8 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
         filtradoTexto.setText("Filtrar por titulo");
         presentadorListaPeliculas.getPeliculas(false);
     }
+    public void ordenVotos(View view){
+
+    }
 
 }
