@@ -33,7 +33,7 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_peliculas);
         presentadorListaPeliculas = new PresentadorListaPeliculas(this);
-        presentadorListaPeliculas.getPeliculas("ninguno");
+        presentadorListaPeliculas.getPeliculas();
         filtrado();
     }
 
@@ -72,11 +72,11 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
                     case "Filtro por genero:":
                         return;
                     case "todos":
-                        presentadorListaPeliculas.getPeliculas("ninguno");
+                        presentadorListaPeliculas.getPeliculas();
                         break;
                     default:
                         presentadorListaPeliculas.setFiltro(selecteditem);
-                        presentadorListaPeliculas.getPeliculas("filtrado");
+                        presentadorListaPeliculas.getPeliculasFiltroCategoria();
                         break;
                 }
             }
@@ -91,20 +91,20 @@ public class ViewListaPeliculas extends AppCompatActivity implements ContratoLis
     public void filtradoPorPalabra(View view){
         EditText filtradoTexto = (EditText) findViewById(R.id.textoFiltrado);
         String texto = String.valueOf(filtradoTexto.getText());
-        presentadorListaPeliculas.getPeliculasFiltro(texto);
+        presentadorListaPeliculas.getPeliculasFiltroTexto(texto);
 
     }
     public void limpiarFiltro(View view){
         EditText filtradoTexto = (EditText) findViewById(R.id.textoFiltrado);
         filtradoTexto.setText("Filtrar por titulo");
-        presentadorListaPeliculas.getPeliculas("ninguno");
+        presentadorListaPeliculas.getPeliculas();
     }
     public void ordenVotos(View view){
         CheckBox checkBox = findViewById(R.id.chkVotos);
         if(checkBox.isChecked()){
-            presentadorListaPeliculas.getPeliculasFiltro("ordenVoto");
+            presentadorListaPeliculas.getPeliculasOrdenVoto();
         }else{
-            presentadorListaPeliculas.getPeliculasFiltro("ninguno");
+            presentadorListaPeliculas.getPeliculas();
         }
     }
 

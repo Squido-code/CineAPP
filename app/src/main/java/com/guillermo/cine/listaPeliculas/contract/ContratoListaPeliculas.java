@@ -13,8 +13,11 @@ public interface ContratoListaPeliculas {
     }
 
     interface Presenter {
-        void getPeliculas(String filtro);
-        void getPeliculasFiltro(String filtro);
+        void getPeliculas();
+        void getPeliculasFiltroTexto(String filtro);
+        void getPeliculasFiltroCategoria();
+        void getPeliculasOrdenVoto();
+
     }
     interface Model{
         void getPeliculasWS(OnLstPeliculasListener onLstPeliculasListener);
