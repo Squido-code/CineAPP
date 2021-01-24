@@ -15,9 +15,10 @@
         android:spinnerMode="dialog" />
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         android:weightSum="100"
+        android:layout_weight="7"
         tools:context="com.guillermo.cine.listaPeliculas.view.ViewListaPeliculas">
 
         <EditText
@@ -48,13 +49,24 @@
             android:onClick="limpiarFiltro"
             android:text="limpiar" />
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5">
 
-
+        <CheckBox
+            android:id="@+id/chkVotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:text="Ordenar peliculas por votos" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerPeliculas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="90" />
+        android:layout_weight="70" />
 
 
 </LinearLayout>
