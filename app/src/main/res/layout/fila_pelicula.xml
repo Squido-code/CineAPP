@@ -28,5 +28,20 @@
             android:gravity="center_vertical"
             android:text="Título"
             android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/txtPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="precio" />
+
+        <TextView
+            android:id="@+id/txtSesiones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="sesiones" />
     </LinearLayout>
+
 </LinearLayout>

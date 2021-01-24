@@ -41,6 +41,7 @@ public class CineAdapter extends RecyclerView.Adapter<CineAdapter.PeliculaViewHo
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         Pelicula pelicula = listaJuegos.get(position);
         holder.nombre.setText(pelicula.getNombre());
+        holder.precio.setText("Precio: "+pelicula.getPrecio()+"€");
         Picasso.get().load(pelicula.getImagen()).into(holder.imagen);
         holder.imagen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +61,13 @@ public class CineAdapter extends RecyclerView.Adapter<CineAdapter.PeliculaViewHo
     public static class PeliculaViewHolder extends RecyclerView.ViewHolder {
         public ImageView imagen;
         public TextView nombre;
+        public TextView precio;
 
         public PeliculaViewHolder(View v) {
             super(v);
             imagen = v.findViewById(R.id.imagenPelicula);
             nombre = v.findViewById(R.id.txtNombre);
+            precio = v.findViewById(R.id.txtPrecio);
 
         }
     }
