@@ -48,7 +48,7 @@ public class Pelicula {
                 pelicula.setSinopsis(json_data.getString(SINOPSIS));
 
 
-                JSONArray horariosJSON = json_data.getJSONArray("horarios");
+                JSONArray horariosJSON = json_data.getJSONArray(HORARIOS);
                 for (int j = 0; j < horariosJSON.length() ; j++) {
                 pelicula.getHorarios().add(horariosJSON.getString(j));
                 }
@@ -124,4 +124,14 @@ public class Pelicula {
         this.horarios = horarios;
     }
 
+    public String horariosToString(){
+        StringBuilder builder = new StringBuilder();
+        for (String hora:
+             horarios) {
+            builder.append(hora);
+            builder.append(" ");
+        }
+
+        return "Sesiones: " + builder.toString();
+    }
 }

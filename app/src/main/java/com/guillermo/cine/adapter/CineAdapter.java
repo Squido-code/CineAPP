@@ -42,6 +42,7 @@ public class CineAdapter extends RecyclerView.Adapter<CineAdapter.PeliculaViewHo
         Pelicula pelicula = listaJuegos.get(position);
         holder.nombre.setText(pelicula.getNombre());
         holder.precio.setText("Precio: "+pelicula.getPrecio()+"€");
+        holder.sesiones.setText(pelicula.horariosToString());
         Picasso.get().load(pelicula.getImagen()).into(holder.imagen);
         holder.imagen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,12 +63,14 @@ public class CineAdapter extends RecyclerView.Adapter<CineAdapter.PeliculaViewHo
         public ImageView imagen;
         public TextView nombre;
         public TextView precio;
+        public TextView sesiones;
 
         public PeliculaViewHolder(View v) {
             super(v);
             imagen = v.findViewById(R.id.imagenPelicula);
             nombre = v.findViewById(R.id.txtNombre);
             precio = v.findViewById(R.id.txtPrecio);
+            sesiones = v.findViewById(R.id.txtSesiones);
 
         }
     }
